@@ -1,5 +1,5 @@
 {
-  "name": "react-config-tutorial",
+  "name": "Meri_Naukri",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
@@ -11,7 +11,7 @@
     "build": "webpack --mode production"
   },
   "keywords": [],
-  "author": "",
+  "author": "Shubham Saxena",
   "license": "ISC",
   "devDependencies": {
     "@babel/core": "^7.2.2",

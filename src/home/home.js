@@ -7,7 +7,6 @@ import { connect } from 'react-redux';
 import { fetchJobs } from "../action/getJobsAction";
 import { Link } from 'react-router-dom';
 
-
 class Home extends Component {
     constructor () {
         super();
@@ -26,12 +25,11 @@ class Home extends Component {
     }
     render () {
         return (
-
             <Container>
                 <Row>
                     <Col xs={6} md={4} style={{ maxHeight: "600px", overflowY: "auto" }}>
                         <Card body>
-                            <h4>
+                            <h4 style={{ backgroundColor: "aliceblue", textAlign: "center", height: "50px", paddingTop: "10px" }}>
                                 Latest Govt Jobs
                             </h4>
                             < ul style={{ backgroundColor: "transparent" }}>
@@ -45,16 +43,30 @@ class Home extends Component {
                     </Col>
                     <Col xs={6} md={4} style={{ maxHeight: "600px", overflowY: "auto" }}>
                         <Card body>
-                            <h4>
+                            <h4 style={{ backgroundColor: "aliceblue", textAlign: "center", height: "50px", paddingTop: "10px" }}>
                                 Latest Private Jobs
                             </h4>
+                            < ul style={{ backgroundColor: "transparent" }}>
+                                {this.state.results && this.state.results.length > 0 ? this.state.results.map((product, i) =>
+                                    (<li className="list" key={i}>
+                                        <Link to={`displayCard/${product.Job_Id}`} > {product.PostName} </Link>
+                                    </li>)
+                                ) : null}
+                            </ul >
                         </Card>
                     </Col>
                     <Col xs={6} md={4} style={{ maxHeight: "600px", overflowY: "auto" }}>
                         <Card body>
-                            <h4>
+                            <h4 style={{ backgroundColor: "aliceblue", textAlign: "center", height: "50px", paddingTop: "10px" }}>
                                 Upcomming Exams News
                             </h4>
+                            < ul style={{ backgroundColor: "transparent" }}>
+                                {this.state.results && this.state.results.length > 0 ? this.state.results.map((product, i) =>
+                                    (<li className="list" key={i}>
+                                        <Link to={`displayCard/${product.Job_Id}`} > {product.PostName} </Link>
+                                    </li>)
+                                ) : null}
+                            </ul >
                         </Card>
                     </Col>
                 </Row>
