@@ -1,0 +1,2 @@
+export const GET_JOBDETAILS = 'GET_JOBDETAILS';
+export const JOBS_LOADING = "JOBS_LOADING";
