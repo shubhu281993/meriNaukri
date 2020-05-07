@@ -1,6 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { fetchJobs } from "../action/getJobsAction";
+import FeesInfo from './feesInfo';
 
 class DisplayCard extends React.Component {
     constructor () {
@@ -98,7 +99,7 @@ class DisplayCard extends React.Component {
                     <hr />
                     <div className="body">
                         <div style={{ display: "flex", textAlign: "center" }}>
-                            <div style={{ width: "50%", display: "inline-block" }}>
+                            {/* <div style={{ width: "50%", display: "inline-block" }}>
                                 <div>
                                     <h3>Application Fees</h3>
                                 </div>
@@ -126,40 +127,42 @@ class DisplayCard extends React.Component {
                                 </div>
                             </div>
 
-                        </div>
-                        <div style={{ marginLeft: "50px", textAlign: "left" }}>
-                            <p>
-                                {'Job Description : ' + desc}<br />
-                                {'Grade Pay : ' + pay}<br />
-                                {'Total Vacancy : ' + vacancy}<br />
-                                {'Vacancy Details : ' + categoryVacancy}<br />
-                                {'Age group : ' + ageGrp}<br />{'Total Post : ' + vacancy}<br />{'Eligibility : ' + eligibility}<br />
-                            </p>
-                        </div>
-                        <div>
-                            <h2 style={{ textAlign: "center" }}>Important Links</h2>
-                            <br />
-                            <div style={{
-                                display: "flex", textAlign: "center"
-                            }}>
-                                < div style={{ width: "50%", display: "inline-block" }}>
-                                    <h3>Apply Online </h3>
-                                    <h3>Download Notification </h3>
-                                    <h3>Website Link </h3>
-                                </div>
-                                <div style={{ width: "50%", display: "inline-block" }}>
-                                    <a href={applyOnlineLink} target="_blank" style={{ fontSize: "xx-large" }}>Click Here</a><br />
-                                    <a href={notificationLink} target="_blank" style={{
-                                        fontSize: "xx-large"
-                                    }}>Click Here</a><br />
-                                    < a href={websiteLink} target="_blank" style={{ fontSize: "xx-large" }}>Click Here</a>
-                                </div>
+                        </div> */}
+                            <FeesInfo fees={fees} appStartDate={appStartDate} appEndDate={appEndDate} feeLastDate={feeLastDate} examDate={examDate} admitCardDate={admitCardDate} />
+                            <div style={{ marginLeft: "50px", textAlign: "left" }}>
+                                <p>
+                                    {'Job Description : ' + desc}<br />
+                                    {'Grade Pay : ' + pay}<br />
+                                    {'Total Vacancy : ' + vacancy}<br />
+                                    {'Vacancy Details : ' + categoryVacancy}<br />
+                                    {'Age group : ' + ageGrp}<br />{'Total Post : ' + vacancy}<br />{'Eligibility : ' + eligibility}<br />
+                                </p>
                             </div>
+                            <div>
+                                <h2 style={{ textAlign: "center" }}>Important Links</h2>
+                                <br />
+                                <div style={{
+                                    display: "flex", textAlign: "center"
+                                }}>
+                                    < div style={{ width: "50%", display: "inline-block" }}>
+                                        <h3>Apply Online </h3>
+                                        <h3>Download Notification </h3>
+                                        <h3>Website Link </h3>
+                                    </div>
+                                    <div style={{ width: "50%", display: "inline-block" }}>
+                                        <a href={applyOnlineLink} target="_blank" style={{ fontSize: "xx-large" }}>Click Here</a><br />
+                                        <a href={notificationLink} target="_blank" style={{
+                                            fontSize: "xx-large"
+                                        }}>Click Here</a><br />
+                                        < a href={websiteLink} target="_blank" style={{ fontSize: "xx-large" }}>Click Here</a>
+                                    </div>
+                                </div>
+                            </div >
                         </div >
+                        <hr />
+                        <div className="footer" />
                     </div >
-                    <hr />
-                    <div className="footer" />
-                </div >
+                </div>
             );
         } else {
             return (
