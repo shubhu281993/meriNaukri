@@ -17,11 +17,25 @@ class Home extends Component {
     }
     componentDidMount () {
         debugger;
+        // if (this.props.jobs.jobs.length > 0) {
+        //     const { jobs } = this.props.jobs.jobs.jobs;
+        //     this.setState({
+        //         result: jobs
+        //     });
+        // } else {
         this.props.fetchJobs().then((x) => {
             this.setState({
                 results: x.payload
             });
         });
+    }
+    componentWillReceiveProps (nextProps) {
+        debugger;
+        if (nextProps.jobs.pending === true) {
+            this.setState({
+                results: nextProps.jobs.jobs
+            });
+        }
     }
     render () {
         return (
@@ -32,13 +46,15 @@ class Home extends Component {
                             <h4 style={{ backgroundColor: "aliceblue", textAlign: "center", height: "50px", paddingTop: "10px" }}>
                                 Latest Govt Jobs
                             </h4>
-                            < ul style={{ backgroundColor: "transparent" }}>
-                                {this.state.results && this.state.results.length > 0 ? this.state.results.map((product, i) =>
-                                    (<li className="list" key={i}>
-                                        <Link to={`displayCard/${product.Job_Id}`} > {product.PostName} </Link>
-                                    </li>)
-                                ) : null}
-                            </ul >
+                            <div >
+                                < ul id="jobDetails">
+                                    {this.state.results && this.state.results.length > 0 ? this.state.results.map((product, i) =>
+                                        (<li className="x" key={i}>
+                                            <Link to={`displayCard/${product.Job_Id}`} > {product.PostName} </Link>
+                                        </li>)
+                                    ) : null}
+                                </ul >
+                            </div>
                         </Card>
                     </Col>
                     <Col xs={6} md={4} style={{ maxHeight: "600px", overflowY: "auto" }}>
@@ -46,7 +62,7 @@ class Home extends Component {
                             <h4 style={{ backgroundColor: "aliceblue", textAlign: "center", height: "50px", paddingTop: "10px" }}>
                                 Latest Private Jobs
                             </h4>
-                            < ul style={{ backgroundColor: "transparent" }}>
+                            < ul id="jobDetails">
                                 {this.state.results && this.state.results.length > 0 ? this.state.results.map((product, i) =>
                                     (<li className="list" key={i}>
                                         <Link to={`displayCard/${product.Job_Id}`} > {product.PostName} </Link>
@@ -60,7 +76,7 @@ class Home extends Component {
                             <h4 style={{ backgroundColor: "aliceblue", textAlign: "center", height: "50px", paddingTop: "10px" }}>
                                 Upcomming Exams News
                             </h4>
-                            < ul style={{ backgroundColor: "transparent" }}>
+                            < ul id="jobDetails">
                                 {this.state.results && this.state.results.length > 0 ? this.state.results.map((product, i) =>
                                     (<li className="list" key={i}>
                                         <Link to={`displayCard/${product.Job_Id}`} > {product.PostName} </Link>
@@ -76,7 +92,7 @@ class Home extends Component {
 }
 
 const mapStateToProps = state => ({
-    jobs: state
+    jobs: state.jobs
 });
 
 export default connect(mapStateToProps, { fetchJobs })(Home);

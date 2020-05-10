@@ -2,6 +2,9 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { fetchJobs } from "../action/getJobsAction";
 import FeesInfo from './feesInfo';
+import JobDescription from './jobDescription';
+import '../style/header.less';
+import { Table } from 'react-bootstrap';
 
 class DisplayCard extends React.Component {
     constructor () {
@@ -86,8 +89,8 @@ class DisplayCard extends React.Component {
                 eligibility, examDate, admitCardDate, notificationLink, applyOnlineLink,
                 vacancy, categoryVacancy, applicationFee } = newJob[0];
             var fees = applicationFee ? applicationFee.split("|") : undefined;
-            return (
-                <div>
+            return (<div style={{ display: "flex" }}>
+                <div className="cardBody">
                     <div className="heading" style={{ textAlign: "center" }}>
                         {companyname !== undefined && postName !== undefined ?
                             <h3>{companyname + " - " + postName}</h3> : null}
@@ -98,71 +101,61 @@ class DisplayCard extends React.Component {
                     </div>
                     <hr />
                     <div className="body">
-                        <div style={{ display: "flex", textAlign: "center" }}>
-                            {/* <div style={{ width: "50%", display: "inline-block" }}>
-                                <div>
-                                    <h3>Application Fees</h3>
-                                </div>
-                                <div>
-                                    {fees.map(a => {
-                                        return (<p>
-                                            {a}
-                                        </p>);
-                                    })}
-
-                                </div>
-                            </div>
-                            <div style={{ width: "50%", display: "inline-block" }}>
-                                <div>
-                                    <h3>Important Dates</h3>
-                                </div>
-                                <div>
-                                    <p>
-                                        {'Application Start Date : ' + appStartDate}<br />
-                                        {'Last Date of Applying Online : ' + appEndDate}<br />
-                                        {'Pay Exam Fee Last Date : ' + feeLastDate}<br />
-                                        {'Exam Date : ' + examDate}<br />
-                                        {'Admit Card Available : ' + admitCardDate}<br />
-                                    </p>
-                                </div>
-                            </div>
-
-                        </div> */}
+                        <div style={{ textAlign: "center" }}>
                             <FeesInfo fees={fees} appStartDate={appStartDate} appEndDate={appEndDate} feeLastDate={feeLastDate} examDate={examDate} admitCardDate={admitCardDate} />
-                            <div style={{ marginLeft: "50px", textAlign: "left" }}>
-                                <p>
-                                    {'Job Description : ' + desc}<br />
-                                    {'Grade Pay : ' + pay}<br />
-                                    {'Total Vacancy : ' + vacancy}<br />
-                                    {'Vacancy Details : ' + categoryVacancy}<br />
-                                    {'Age group : ' + ageGrp}<br />{'Total Post : ' + vacancy}<br />{'Eligibility : ' + eligibility}<br />
-                                </p>
+                            <div style={{ textAlign: "left" }}>
+                                <JobDescription desc={desc} pay={pay} vacancy={vacancy} categoryVacancy={categoryVacancy} ageGrp={ageGrp} eligibility={eligibility} />
                             </div>
                             <div>
                                 <h2 style={{ textAlign: "center" }}>Important Links</h2>
                                 <br />
-                                <div style={{
-                                    display: "flex", textAlign: "center"
-                                }}>
-                                    < div style={{ width: "50%", display: "inline-block" }}>
-                                        <h3>Apply Online </h3>
-                                        <h3>Download Notification </h3>
-                                        <h3>Website Link </h3>
-                                    </div>
-                                    <div style={{ width: "50%", display: "inline-block" }}>
-                                        <a href={applyOnlineLink} target="_blank" style={{ fontSize: "xx-large" }}>Click Here</a><br />
-                                        <a href={notificationLink} target="_blank" style={{
-                                            fontSize: "xx-large"
-                                        }}>Click Here</a><br />
-                                        < a href={websiteLink} target="_blank" style={{ fontSize: "xx-large" }}>Click Here</a>
-                                    </div>
-                                </div>
+                                <Table responsive hover style={{ width: "100%" }}>
+                                    <tbody>
+                                        <tr>
+                                            <td>
+                                                Apply Online
+                                            </td>
+                                            <td>
+                                                <a href={applyOnlineLink} target="_blank" style={{ fontSize: "xx-large" }}>Click Here</a>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                Download Notification
+                                            </td>
+                                            <td>
+                                                <a href={notificationLink} target="_blank" style={{
+                                                    fontSize: "xx-large"
+                                                }}>Click Here</a>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                Website Link
+                                            </td>
+                                            <td>
+                                                < a href={websiteLink} target="_blank" style={{ fontSize: "xx-large" }}>Click Here</a>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </Table>
                             </div >
                         </div >
                         <hr />
                         <div className="footer" />
                     </div >
                 </div>
+                <div className="quotes">
+
+                    <div className="quote-container">
+                        <i className="pin" />
+                        <blockquote className="note yellow">
+                            We can't solve problems by using the same kind of thinking we used when we created them.
+                            <cite className="author">Albert Einstein</cite>
+                        </blockquote>
+                    </div>
+                </div>
+            </div>
             );
         } else {
             return (

@@ -1,6 +1,7 @@
 .content {
-    background-color: #FFF;
+    background-color: azure;
     padding: 20px;
+    font-size: 1.2vw;
   }
   .content h2 {
     padding: 0;
@@ -9,18 +10,25 @@
   .content li {
     margin-bottom: 10px;
   }
-
-  .list{
-    list-style-type: none;
-  margin: 0;
-  &.active{
-    background-color: #0099FF;
-  }
-   a{
-    color:black;
-  font-weight: bold;
-  text-decoration: none;
-  padding: 10px;
-  display: inline-block;
-  }
+#jobDetails{
+  background: transparent;
 }
+#jobDetails li{
+  list-style-type: none;
+    margin: 0;
+    &.active{
+      background-color: red;
+    }
+}
+
+ 
+    #jobDetails li a{
+      color: blue;
+    font-weight: bold;
+    text-decoration: underline;
+    padding: 20px;
+    display: inline-block;
+    &:hover{
+      color: rgb(5, 39, 61);
+    }
+    }
